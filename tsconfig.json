@@ -8,7 +8,8 @@
         "typeRoots": ["./node_modules/@types"],
     },
     "files": [
-        "server.ts"
+        "server.ts",
+        "log.ts"
     ],
     "include": [
         "./config/",

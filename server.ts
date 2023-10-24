@@ -5,6 +5,7 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as cors from "cors";
 import config from './config/config';
+import log from "./log";
 
 // Init app
 let app:express.Application = express();
@@ -37,5 +38,7 @@ app.use(cors(corsOptions));
 
 //Set up server listen
 app.listen(config.PORT, () : void => {
-    console.log(`${true}`);
+    log('App starting ...', 'info');
+    log("App launched !", "success");
+    log(`Listening on PORT : ${config.PORT}`, "info");
 });
