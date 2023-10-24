@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "outDir": "./dist",
+        "rootDir": "./",
+        "module": "CommonJS",
+        "strict": true,
+        "typeRoots": ["./node_modules/@types"],
+    },
+    "files": [
+        "server.ts"
+    ],
+    "include": [
+        "./config/",
+        "./src/",
+        "./middlewares/"
+    ]
+}
