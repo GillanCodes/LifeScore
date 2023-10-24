@@ -24,6 +24,14 @@ export const editAction = (req:Request, res:Response) => {
     
 }
 
-export const deleteAction = (req:Request, res:Response) => {
-    
+export const deleteAction = async (req:Request, res:Response) => {
+
+    try {
+        const {id} = req.params;
+        var action = await actionModel.deleteOne({_id: id});
+        return res.status(201).send({id});
+    } catch (error:any) {
+        log(error, "error");
+    }
+
 }
