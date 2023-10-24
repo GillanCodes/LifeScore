@@ -5,7 +5,7 @@ let router:Router = Router();
 
 //Routes definitions
 router.post('/signin', signin);
-router.post('/singup', signup);
+router.post('/signup', signup);
 router.post('/signout', signout);
 
 //default export

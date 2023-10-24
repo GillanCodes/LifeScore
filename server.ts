@@ -10,6 +10,9 @@ import log from "./log";
 // Init app
 let app:express.Application = express();
 
+//include database
+require('./config/database');
+
 //Config body-parse && cookie-parser
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}));
 app.use(bodyParser.json({limit: "50mb"}));
@@ -34,6 +37,12 @@ const corsOptions:Object = {
     'optionsSuccessStatus': 200
 }
 app.use(cors(corsOptions));
+
+//import routes
+import authRoutes from "./src/routes/auth.routes";
+
+//Routes init
+app.use('/api/auth', authRoutes);
 
 
 //Set up server listen

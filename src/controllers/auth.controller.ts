@@ -3,6 +3,7 @@ import config from "../../config/config";
 import * as express from "express";
 import userModel from '../../models/user.model';
 import { loginErrors, registerErrors } from "../errors/auth.errors";
+import log from "../../log";
 
 /**
  * @param {number} maxAge Define the max age of the auth cookie 
@@ -23,8 +24,9 @@ export const signup = async (req: express.Request, res: express.Response) => {
     const {username, email, password}: {username:string,email:string,password:string} = req.body;
     try {
         const user = await userModel.create({username, email, password});
+        log(`New user created : ${user._id}`, "info")
         return res.status(201).json({user:user._id});
-    } catch (error) {
+    } catch (error:any) {
         const errors = registerErrors(error);
         res.status(200).send({errors});
     };

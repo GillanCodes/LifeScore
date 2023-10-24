@@ -1,11 +1,12 @@
 //Import libs
 import { connect } from 'mongoose';
 import config from './config';
+import log from '../log';
 
 //Connection to DB
 connect(config.DB_CONNECT_STRING)
     .then(() => {
-        console.log("MongoDB : Connected");
+        log("MongoDB : Connected", "success");
     }).catch((err: string) => {
-        console.log(err);
+        log(err, "error");
     });
