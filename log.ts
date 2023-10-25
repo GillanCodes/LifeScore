@@ -35,33 +35,43 @@ fs.readFile(filePath, (err, data) => {
     });
 });
 
-const log = (message:string, type:string): void => {
+const log = (message:string, type?:string|number|undefined|null): void => {
     switch(type)
     {
+        case 0:
         case "error":
             var ln = `[${time()}] [ERROR] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(FgRed, ln, Reset);
             break;
+        case 1:
         case "success":
             var ln = `[${time()}] [SUCCESS] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(FgGreen, ln, Reset);
             break;
+        case 2:
         case "warn":
             var ln = `[${time()}] [WARN] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(FgYellow, ln, Reset);
             break;
+        case 3:
         case "info":
             var ln =  `[${time()}] [INFO] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(FgCyan, ln, Reset);
             break;
+        case 4:
         case "debug":
             var ln =  `[${time()}] [DEBUG] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(BgGreen + FgBlack, ln, Reset);
+            break;
+        default:
+            var ln =  `[${time()}] [---] ${appName} - ${message}`;
+            fs.appendFileSync(filePath, `${ln}\n`);
+            console.log(Reset, ln, Reset);
             break;
     }
     return;
