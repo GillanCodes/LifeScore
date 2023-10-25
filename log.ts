@@ -35,7 +35,7 @@ fs.readFile(filePath, (err, data) => {
     });
 });
 
-const log = (message:string, type?:string|number|undefined|null): void => {
+const log = (message:string|object|null|undefined|number, type?:string|number|undefined|null): void => {
     switch(type)
     {
         case 0:
