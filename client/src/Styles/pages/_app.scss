@@ -1,0 +1,30 @@
+.container
+{
+
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242936;
+
+    .app-container
+    {
+        height: 800px;
+        width: 500px;
+        background-color: #FEFEFE;
+        border-radius: 10px;
+
+        .head
+        {
+            margin: 25px;
+
+            .title 
+            {
+                text-align: center;
+                text-decoration: underline;
+            }
+        }
+    }
+}
