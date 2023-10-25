@@ -10,7 +10,7 @@ export interface IAction {
     recurrence: string,
     time:string,
     counter:number,
-    step:String,
+    step:number,
 }
 
 const actionSchema = new Schema<IAction>({
@@ -23,7 +23,7 @@ const actionSchema = new Schema<IAction>({
     recurrence:     {type: String},
     time:           {type: String},
     counter:        {type: Number},
-    step:           {type:String},
+    step:           {type:Number, default:1},
 });
 
 const actionModel = model("actions", actionSchema);
