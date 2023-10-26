@@ -1,0 +1,39 @@
+.modal-container {
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal {
+        height: 500px;
+        width: 300px;
+        background-color: aliceblue;
+        border-radius: 10px;
+
+        .modal-head {
+            height: 20px;
+            width: 100%;
+            text-align: end;
+
+            span {
+                padding: 10px;
+            }
+        }
+
+        .modal-body {
+            height: calc(100% - 20px);
+        }
+
+    }
+
+}

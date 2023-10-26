@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { isEmpty } from "../../Utils";
 import axios from "axios";
 import Timer from "./Modules/Timer";
+import Modal from "./Modals/Modal";
 
-export default function ActionsFeed({user}) {
+export default function ActionsFeed({user, modal, setModal}) {
 
     const [actions, setActions] = useState();
 
@@ -35,7 +36,7 @@ export default function ActionsFeed({user}) {
                         <div className="card-body">
                             <>
                                 <div className="buttons">
-                                    <p>Edit</p>
+                                    <p onClick={() => setModal({open:true, id:action._id})}>Edit</p>
                                 </div>
                                 {action.type === "counter" && (
                                     <>
@@ -46,7 +47,7 @@ export default function ActionsFeed({user}) {
                                 )}
                                 {action.type === "timer" && (
                                     <>
-                                      <Timer action={action} />  
+                                    <Timer action={action} />  
                                     </>
                                 )}
                             

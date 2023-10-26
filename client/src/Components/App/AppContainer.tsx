@@ -2,12 +2,15 @@ import { useSelector } from "react-redux";
 import ActionsFeed from "./ActionsFeed";
 import { useEffect, useState } from "react";
 import { isEmpty } from "../../Utils";
+import Modal from "./Modals/Modal";
 
 export default function AppContainer() {
 
     const userData = useSelector((state:any) => state.userReducer);
 
-    const [load, setLoad] = useState(false);
+    const [load, setLoad] = useState(false);    
+    
+    const [modal, setModal] = useState({open: false, id: ""});
 
     useEffect(() => {
         if(!isEmpty(userData))
@@ -25,7 +28,12 @@ export default function AppContainer() {
 
                 <div className="body">
                     {load && (
-                        <ActionsFeed user={userData} />
+                        <>
+                            <ActionsFeed user={userData} modal={modal} setModal={setModal} />
+                            {!isEmpty(modal.id) && modal.open && (
+                                <Modal setModal={setModal} modal={modal} />
+                            )}
+                        </>
                     )}
                 </div>
 
