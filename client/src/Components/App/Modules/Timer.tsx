@@ -36,7 +36,7 @@ export default function Timer({action} : {action: IAction}) {
 
     return (
         <div className="timer">
-            <p id="timer" className='timer-text'></p>
+            <p id="timer" className='timer-text select-none'></p>
         </div>
     )
 }

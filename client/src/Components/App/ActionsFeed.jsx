@@ -40,7 +40,7 @@ export default function ActionsFeed({user}) {
                                 {action.type === "counter" && (
                                     <>
                                         <div className="counter">
-                                            <p>{action.counter}</p>
+                                            <p className="select-none">{action.counter}</p>
                                         </div>
                                     </>
                                 )}
