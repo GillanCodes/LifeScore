@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { isEmpty } from "../../Utils";
 import axios from "axios";
+import Timer from "./Modules/Timer";
 
 export default function ActionsFeed({user}) {
 
@@ -32,17 +33,25 @@ export default function ActionsFeed({user}) {
                             <p className="card-description">{action.description}</p>
                         </div>
                         <div className="card-body">
-                            {action.type === "counter" && (
-                                <>
-                                <div className="buttons">
-                                    <p>+</p>
-                                    <p>-</p>
-                                </div>
-                                <div className="counter">
-                                    <p>{action.counter}</p>
-                                </div>
-                                </>
-                            )}
+                            <>
+                                {action.type === "counter" && (
+                                    <>
+                                        <div className="buttons">
+                                            <p>+</p>
+                                            <p>-</p>
+                                        </div>
+                                        <div className="counter">
+                                            <p>{action.counter}</p>
+                                        </div>
+                                    </>
+                                )}
+                                {action.type === "timer" && (
+                                    <>
+                                      <Timer action={action} />  
+                                    </>
+                                )}
+                            
+                            </>
                         </div>
 
                     </div>
