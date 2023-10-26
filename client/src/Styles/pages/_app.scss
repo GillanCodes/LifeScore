@@ -11,10 +11,11 @@
 
     .app-container
     {
-        height: 800px;
+        height: 750px;
         width: 500px;
         background-color: #FEFEFE;
         border-radius: 10px;
+        overflow: scroll;
 
         .head
         {
