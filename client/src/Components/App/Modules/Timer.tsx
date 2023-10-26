@@ -4,7 +4,7 @@ import { isEmpty } from '../../../Utils';
 
 export default function Timer({action} : {action: IAction}) {
 
-    var startDate:number = new Date('Oct 26, 2023 11:00:00').getTime();
+    var startDate:number = new Date('Oct 27, 2023 11:00:00').getTime();
 
     const [load, setLoad] = useState(false);
 
@@ -12,7 +12,10 @@ export default function Timer({action} : {action: IAction}) {
         if (load){
             var countDown = setInterval(() => {
                 var now:number = new Date().getTime();
-                var distance:number = now - startDate;
+                var distance:number = startDate - now;
+
+                if (distance < 0)
+                    distance = -distance
 
                 var days:number = Math.floor(distance / (1000 * 60 * 60 * 24));
                 var hours:number = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -33,7 +36,7 @@ export default function Timer({action} : {action: IAction}) {
 
     return (
         <div className="timer">
-            <p id="timer"></p>
+            <p id="timer" className='timer-text'></p>
         </div>
     )
 }
