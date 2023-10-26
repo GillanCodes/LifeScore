@@ -34,12 +34,11 @@ export default function ActionsFeed({user}) {
                         </div>
                         <div className="card-body">
                             <>
+                                <div className="buttons">
+                                    <p>Edit</p>
+                                </div>
                                 {action.type === "counter" && (
                                     <>
-                                        <div className="buttons">
-                                            <p>+</p>
-                                            <p>-</p>
-                                        </div>
                                         <div className="counter">
                                             <p>{action.counter}</p>
                                         </div>
