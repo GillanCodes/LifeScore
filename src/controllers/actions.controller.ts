@@ -14,6 +14,18 @@ export const getActions = async (req:Request, res:Response) => {
 
 }
 
+export const getAction = async (req:Request, res:Response) => {
+    
+    try {
+        const {id} = req.params;
+        if (!isValidObjectId(id)) log("not valid id getsoloaction", 0);
+        const action = await actionModel.findById(id)
+        return res.status(200).send(action);
+    } catch (error) {
+        
+    }
+}
+
 export const createAction = (req:Request, res:Response) => {
     try {
         
