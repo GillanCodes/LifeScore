@@ -41,7 +41,7 @@ export default function ActionsFeed({user, modal, setModal}) {
                                 )}
                                 {action.type === "timer" && (
                                     <>
-                                    <Timer action={action} />  
+                                        <Timer action={action} />  
                                     </>
                                 )}
                             

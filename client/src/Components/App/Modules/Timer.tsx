@@ -4,7 +4,7 @@ import { isEmpty } from '../../../Utils';
 
 export default function Timer({action} : {action: IAction}) {
 
-    var startDate:number = new Date('Oct 27, 2023 11:00:00').getTime();
+    var startDate:number = new Date(action.time).getTime();
 
     const [load, setLoad] = useState(false);
 

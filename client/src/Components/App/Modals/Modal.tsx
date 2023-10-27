@@ -45,6 +45,22 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
                         <div className="field">
                             <input type="text" name="title" id="title" value={currentAction.title} onChange={(e) => {setCurrentAction({...currentAction, title:e.target.value})}} />
                             <input type="text" name="title" id="title" value={currentAction.description} onChange={(e) => {setCurrentAction({...currentAction, description:e.target.value})}} />
+                            <select name="types" id="types" value={currentAction.type} onChange={(e) => setCurrentAction({...currentAction, type:e.target.value}) }>
+                                <option value="timer">Timer</option>
+                                <option value="counter">Counter</option>
+                            </select>
+
+                            {currentAction.type === "counter" && (
+                                <div className="fields">
+                                    <input type="number" value={currentAction.counter} onChange={(e) => setCurrentAction({...currentAction, counter:e.target.value}) } />
+                                    <input type="number" value={currentAction.step} onChange={(e) => setCurrentAction({...currentAction, step:e.target.value}) } />
+                                </div>
+                            )}
+
+                            {currentAction.type === "timer" && (
+                                <input type="datetime-local" id="start" name="trip-start" value={currentAction.time} onChange={(e) => setCurrentAction({...currentAction, time:e.target.value}) } />
+                            )}
+
                             <button onClick={saveHandle}>Send</button>
                         </div>
                     )}
