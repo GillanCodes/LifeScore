@@ -3,9 +3,12 @@ import { isEmpty } from "../../Utils";
 import axios from "axios";
 import Timer from "./Modules/Timer";
 import Modal from "./Modals/Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateActions } from "../../actions/action.actions";
 
 export default function ActionsFeed({user, modal, setModal}) {
+
+    const dispatch = useDispatch();
 
     const [load, setLoad] = useState(false);
 
@@ -17,6 +20,10 @@ export default function ActionsFeed({user, modal, setModal}) {
             setLoad(true);
         }
     }, [actionsData]);
+
+    const counterHandler = (id) => {
+        dispatch(updateActions(id));
+    }
 
     return (
         <div>
@@ -34,7 +41,7 @@ export default function ActionsFeed({user, modal, setModal}) {
                                 </div>
                                 {action.type === "counter" && (
                                     <>
-                                        <div className="counter">
+                                        <div className="counter" onClick={() => counterHandler(action._id)}>
                                             <p className="select-none">{action.counter}</p>
                                         </div>
                                     </>
