@@ -4,6 +4,7 @@ import './Styles/index.scss';
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getUser } from "./actions/user.actions";
+import { getActions } from "./actions/action.actions";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     if (UId)
     {
       dispatch(getUser(UId));
+      dispatch(getActions);
     }
   }, [UId, dispatch]);
 
