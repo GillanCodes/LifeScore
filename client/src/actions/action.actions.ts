@@ -32,3 +32,16 @@ export const editActions = (currentAction:IAction) => {
         });
     };
 }
+export const updateActions = (id:string) => {
+    return (dispatch:any) => {
+        return axios({
+            method:"put",
+            url:`${process.env.REACT_APP_API_URL}/action/${id}`,
+            withCredentials:true
+        }).then((res) => {
+            dispatch({type: EDIT_ACTIONS, payload: res.data});
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
+}
