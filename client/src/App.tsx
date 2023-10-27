@@ -25,7 +25,7 @@ function App() {
     if (UId)
     {
       dispatch(getUser(UId));
-      dispatch(getActions);
+      dispatch(getActions());
     }
   }, [UId, dispatch]);
 

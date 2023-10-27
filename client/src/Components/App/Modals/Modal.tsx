@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { IAction } from '../../../types';
-import axios from 'axios';
-import { isEmpty } from '../../../Utils';
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
+    const actionsData = useSelector((state:any) => state.actionsReducer);
+
     const [load, setLoad] = useState(false);
-    const [action, setAction]:any = useState();
+    const [currentAction, setCurrentAction]:any = useState();
 
     useEffect(() => {
-        if(!load) {
-            axios({
-                method: "GET",
-                withCredentials: true,
-                url: `${process.env.REACT_APP_API_URL}/action/${modal.id}`
-            }).then((res) => {
-                setAction(res.data)
-                if (!isEmpty(action)) setLoad(true);
-            })
-        }
-    }, [action]);
+        console.log(actionsData)
+    }, [actionsData]);
 
     return (
         <div className='modal-container'>
@@ -31,8 +22,8 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
                 <div className="modal-body">
                     {load && (
                         <div className="field">
-                            <input type="text" name="title" id="title" value={action.title} />
-                            <input type="text" name="title" id="title" value={action.description} />
+                            <input type="text" name="title" id="title" value={currentAction.title} />
+                            <input type="text" name="title" id="title" value={currentAction.description} />
                         </div>
                     )}
                 </div>

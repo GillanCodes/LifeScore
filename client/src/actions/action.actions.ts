@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const GET_ACTIONS = "GET_ACTIONS";
 
-export const getActions = (UId:string) => {
+export const getActions = () => {
     return (dispatch:any) => {
         return axios({
             method:"get",
