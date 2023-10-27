@@ -1,13 +1,21 @@
-import { GET_ACTIONS } from "../actions/action.actions";
+import { EDIT_ACTIONS, GET_ACTIONS } from "../actions/action.actions";
+import { IAction } from "../types";
 
 const initialState:object = {};
 
-export default function actionsReducer(state = initialState, action:any)
+export default function actionsReducer(state:any = initialState, action:any)
 {
     switch(action.type)
     {
         case GET_ACTIONS:
             return action.payload;
+        case EDIT_ACTIONS:
+            return state.map((uAction:IAction) => {
+                if (uAction._id === action.payload._id)
+                {
+                    return action.payload;
+                } else return uAction;
+            });
         default:
             return state;
     }

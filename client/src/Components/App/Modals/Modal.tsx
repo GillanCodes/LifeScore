@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { IAction } from '../../../types';
+import axios from 'axios';
+import { isEmpty } from '../../../Utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { editActions } from '../../../actions/action.actions';
 
 export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
+
+    const dispatch:any = useDispatch();
 
     const actionsData = useSelector((state:any) => state.actionsReducer);
 
@@ -9,8 +15,23 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
     const [currentAction, setCurrentAction]:any = useState();
 
     useEffect(() => {
-        console.log(actionsData)
-    }, [actionsData]);
+        if(!load) {
+            if (!isEmpty(actionsData))
+            {
+                actionsData.map((action:IAction) => {
+                    if (action._id === modal.id)
+                    {
+                        setCurrentAction(action);
+                        setLoad(true);
+                    }
+                })
+            }
+        }
+    }, [actionsData, load]);
+
+    const saveHandle = () => {
+        dispatch(editActions(currentAction));
+    }
 
     return (
         <div className='modal-container'>
@@ -22,8 +43,9 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
                 <div className="modal-body">
                     {load && (
                         <div className="field">
-                            <input type="text" name="title" id="title" value={currentAction.title} />
-                            <input type="text" name="title" id="title" value={currentAction.description} />
+                            <input type="text" name="title" id="title" value={currentAction.title} onChange={(e) => {setCurrentAction({...currentAction, title:e.target.value})}} />
+                            <input type="text" name="title" id="title" value={currentAction.description} onChange={(e) => {setCurrentAction({...currentAction, description:e.target.value})}} />
+                            <button onClick={saveHandle}>Send</button>
                         </div>
                     )}
                 </div>
