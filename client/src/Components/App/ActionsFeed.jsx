@@ -3,30 +3,24 @@ import { isEmpty } from "../../Utils";
 import axios from "axios";
 import Timer from "./Modules/Timer";
 import Modal from "./Modals/Modal";
+import { useSelector } from "react-redux";
 
 export default function ActionsFeed({user, modal, setModal}) {
 
-    const [actions, setActions] = useState();
+    const [load, setLoad] = useState(false);
+
+    const actionsData = useSelector((state) => state.actionsReducer);
 
     useEffect(() => {
-        if (user)
+        if (!isEmpty(actionsData))
         {
-            if (!isEmpty(user._id))
-            {
-                axios({
-                    method:"GET",
-                    withCredentials:true,
-                    url: `${process.env.REACT_APP_API_URL}/action`
-                }).then((res) => {
-                    setActions(res.data);
-                });
-            }
+            setLoad(true);
         }
-    }, [user]);
+    }, [actionsData]);
 
     return (
         <div>
-            {!isEmpty(actions) && actions.map((action) => {
+            {load && actionsData.map((action) => {
                 return (
                     <div className="card" key={action._id} id={action._id}>    
                         <div className="card-head">
