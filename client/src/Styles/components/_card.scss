@@ -10,7 +10,7 @@
 {
 
     height: 80px;
-    background-color: lightblue;
+    background-color: $secondary;
 
     margin: 10px 5px;
     border-radius: 10px;
@@ -54,18 +54,17 @@
                 width: 60px;
                 height: 30px;
                 border-radius: 10px;
-                background-color: black;
+                background-color: $primary;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #FFF;
                 font-size: 20px;
                 margin: 5px 10px 5px 0px;
                 cursor: pointer;
             }
             
             p:hover {
-                background-color: blue;
+                background-color: $accent;
             }
 
         }
@@ -75,7 +74,7 @@
             height: 100%;
             width: 100px;
 
-            background-color: aqua;
+            background-color: $primary;
             border-radius: 10px;
 
             display: flex;
@@ -95,7 +94,7 @@
             height: 100%;
             width: 200px;
 
-            background-color: aqua;
+            background-color: $primary;
             border-radius: 10px;
 
             display: flex;

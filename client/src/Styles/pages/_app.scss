@@ -1,6 +1,7 @@
 $app-height: 750px;
 $head-height: 60px;
 $footer-height: 50px;
+$margin: 10px;
 
 
 .container
@@ -12,13 +13,13 @@ $footer-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #242936;
+    background-color: $text;
 
     .app-container
     {
         height: $app-height;
         width: 500px;
-        background-color: #FEFEFE;
+        background-color: $background;
         border-radius: 10px;
         overflow: scroll;
         position: relative;
@@ -26,6 +27,9 @@ $footer-height: 50px;
         .head
         {
             height: $head-height;
+            background-color: $primary;
+            margin: $margin;
+            border-radius: 10px;
 
             .title 
             {
@@ -39,11 +43,14 @@ $footer-height: 50px;
         }
 
         .body {
-            height: calc($app-height - $footer-height - $head-height);
+            height: calc($app-height - $footer-height - $head-height - ($margin*4));
         }
 
         .footer {
+            border-radius: 10px;
             height: $footer-height;
+            margin: $margin;
+            background-color: $primary;
         }
     }
 }

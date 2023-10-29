@@ -5,10 +5,12 @@
     border: none;
     border-radius: 5px;
     margin: 5px;
+    background-color: $secondary;
 }
 
 .button:hover
 {
     text-decoration: underline;
     cursor: pointer;
+    background-color: $accent;
 }
