@@ -32,7 +32,7 @@ export default function Timer({action} : {action: IAction}) {
             })
         }
 
-    }, [load]);
+    }, [load, action]);
 
     useEffect(() => {
         if(!isEmpty(action))
