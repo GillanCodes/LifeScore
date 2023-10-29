@@ -7,6 +7,7 @@ export default function Timer({action} : {action: IAction}) {
     var startDate:number = new Date(action.time).getTime();
 
     const [load, setLoad] = useState(false);
+    const [time, setTime] = useState("");
 
     useEffect(() => {
         if (load){
@@ -22,9 +23,13 @@ export default function Timer({action} : {action: IAction}) {
                 var minutes:number = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds:number = Math.floor((distance % (1000 * 60)) / 1000);
 
-                const el = document.getElementById('timer') as HTMLElement;
-                el.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-            });
+                setTime(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+            }, 1000);
+
+            return (() => {
+                clearInterval(countDown);
+            })
         }
 
     }, [load]);
@@ -36,7 +41,7 @@ export default function Timer({action} : {action: IAction}) {
 
     return (
         <div className="timer">
-            <p id="timer" className='timer-text select-none'></p>
+            <p id="timer" className='timer-text select-none'>{time}</p>
         </div>
     )
 }
