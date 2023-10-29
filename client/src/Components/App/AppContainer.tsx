@@ -25,6 +25,7 @@ export default function AppContainer() {
 
                 <div className="head">
                     <h1 className="title">LifeScore</h1>
+                    <button className="new-card">+</button>
                 </div>
 
                 <div className="body">
