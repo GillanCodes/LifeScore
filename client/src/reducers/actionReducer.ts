@@ -1,4 +1,4 @@
-import { EDIT_ACTIONS, GET_ACTIONS } from "../actions/action.actions";
+import { ADD_ACTION, EDIT_ACTIONS, GET_ACTIONS } from "../actions/action.actions";
 import { IAction } from "../types";
 
 const initialState:object = {};
@@ -16,6 +16,8 @@ export default function actionsReducer(state:any = initialState, action:any)
                     return action.payload;
                 } else return uAction;
             });
+        case ADD_ACTION:
+            return [...state, action.payload];
         default:
             return state;
     }
