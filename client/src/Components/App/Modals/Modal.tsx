@@ -39,7 +39,7 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
             <div className="modal">
                 <div className="modal-head">
-                    <p className='title'>{currentAction.title}</p>
+                    <p className='title'>{load && (currentAction.title)}</p>
                     <span onClick={() => setModal({open:false, id: ""})}>X</span>
                 </div>
                 <div className="modal-body">
