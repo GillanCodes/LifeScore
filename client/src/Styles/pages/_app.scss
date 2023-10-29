@@ -1,3 +1,8 @@
+$app-height: 750px;
+$head-height: 60px;
+$footer-height: 50px;
+
+
 .container
 {
 
@@ -11,7 +16,7 @@
 
     .app-container
     {
-        height: 750px;
+        height: $app-height;
         width: 500px;
         background-color: #FEFEFE;
         border-radius: 10px;
@@ -20,13 +25,25 @@
 
         .head
         {
-            margin: 25px;
+            height: $head-height;
 
             .title 
             {
-                text-align: center;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
                 text-decoration: underline;
             }
+        }
+
+        .body {
+            height: calc($app-height - $footer-height - $head-height);
+        }
+
+        .footer {
+            height: $footer-height;
         }
     }
 }

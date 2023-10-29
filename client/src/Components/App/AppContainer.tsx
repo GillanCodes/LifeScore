@@ -3,6 +3,7 @@ import ActionsFeed from "./ActionsFeed";
 import { useEffect, useState } from "react";
 import { isEmpty } from "../../Utils";
 import Modal from "./Modals/Modal";
+import Logout from "./Modules/Logout";
 
 export default function AppContainer() {
 
@@ -33,6 +34,15 @@ export default function AppContainer() {
                             {!isEmpty(modal.id) && modal.open && (
                                 <Modal setModal={setModal} modal={modal} />
                             )}
+                        </>
+                    )}
+                </div>
+
+                <div className="footer">
+                    {load && (
+                        <>
+                            <p>{userData.username}</p>
+                            <Logout />
                         </>
                     )}
                 </div>
