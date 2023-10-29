@@ -21,7 +21,7 @@ $margin: 10px;
         width: 500px;
         background-color: $background;
         border-radius: 10px;
-        overflow: scroll;
+        overflow: hidden;
         position: relative;
 
         .head
@@ -65,6 +65,7 @@ $margin: 10px;
 
         .body {
             height: calc($app-height - $footer-height - $head-height - ($margin*4));
+            overflow: scroll;
         }
 
         .footer {
