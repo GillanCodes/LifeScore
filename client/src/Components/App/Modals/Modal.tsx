@@ -31,6 +31,7 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
     const saveHandle = () => {
         dispatch(editActions(currentAction));
+        setModal({open:false, id:""});
     }
 
     return (
