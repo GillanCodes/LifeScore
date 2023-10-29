@@ -39,6 +39,7 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
             <div className="modal">
                 <div className="modal-head">
+                    <p className='title'>{currentAction.title}</p>
                     <span onClick={() => setModal({open:false, id: ""})}>X</span>
                 </div>
                 <div className="modal-body">
@@ -62,7 +63,7 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
                                 <input className='input' type="datetime-local" id="start" name="trip-start" value={currentAction.time} onChange={(e) => setCurrentAction({...currentAction, time:e.target.value}) } />
                             )}
 
-                            <button className='button' onClick={saveHandle}>Send</button>
+                            <button className='button' onClick={saveHandle}>Save</button>
                         </div>
                     )}
                 </div>

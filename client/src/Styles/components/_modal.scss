@@ -23,11 +23,18 @@
         .modal-head {
             height: 40px;
             width: 100%;
-            // text-align: end;
+            text-align: center;
             display: flex;
             justify-content: flex-end;
             align-items: center;
 
+            p.title {
+                font-size: 18px;
+                text-decoration: underline;
+                width: calc(100%  - 43px);
+                margin-left: 43.3px;
+                text-align: center;
+            }
 
             span {
                 margin: 4px;
