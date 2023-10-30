@@ -5,6 +5,7 @@ import { type } from "os";
 export const GET_ACTIONS = "GET_ACTIONS";
 export const EDIT_ACTIONS = "EDIT_ACTIONS";
 export const ADD_ACTION = "ADD_ACTION";
+export const DELETE_ACTION = "DELETE_ACTION";
 
 export const getActions = () => {
     return (dispatch:any) => {
@@ -61,6 +62,25 @@ export const newAction = () => {
             }
         }).then((res) => {
             dispatch({type: ADD_ACTION, payload: res.data});
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+}
+
+export const deleteAction = (id:string) => {
+    return(dispatch:any) => {
+        return axios({
+            method: "DELETE",
+            withCredentials: true,
+            url: `${process.env.REACT_APP_API_URL}/action/${id}`,
+            data: {
+                title: "New Card",
+                description: `Card created on ${new Date()}`,
+                type: "counter"
+            }
+        }).then((res) => {
+            dispatch({type: DELETE_ACTION, payload: res.data});
         }).catch((err) => {
             console.log(err);
         })

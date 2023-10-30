@@ -1,4 +1,4 @@
-import { ADD_ACTION, EDIT_ACTIONS, GET_ACTIONS } from "../actions/action.actions";
+import { ADD_ACTION, DELETE_ACTION, EDIT_ACTIONS, GET_ACTIONS } from "../actions/action.actions";
 import { IAction } from "../types";
 
 const initialState:object = {};
@@ -18,6 +18,8 @@ export default function actionsReducer(state:any = initialState, action:any)
             });
         case ADD_ACTION:
             return [...state, action.payload];
+        case DELETE_ACTION:
+            return state.filter((uAction:IAction) => uAction._id !== action.payload.id);
         default:
             return state;
     }
