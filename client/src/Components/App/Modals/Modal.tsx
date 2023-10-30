@@ -3,7 +3,7 @@ import { IAction } from '../../../types';
 import axios from 'axios';
 import { isEmpty } from '../../../Utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { editActions } from '../../../actions/action.actions';
+import { deleteAction, editActions } from '../../../actions/action.actions';
 
 export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
@@ -13,6 +13,7 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
 
     const [load, setLoad] = useState(false);
     const [currentAction, setCurrentAction]:any = useState();
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
 
     useEffect(() => {
         if(!load) {
@@ -32,6 +33,12 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
     const saveHandle = () => {
         dispatch(editActions(currentAction));
         setModal({open:false, id:""});
+    }
+
+    const deleteHandler = () => {
+        dispatch(deleteAction(currentAction._id));
+        setDeleteConfirm(false);
+        setModal({open: false, id: ""});
     }
 
     return (
@@ -64,6 +71,15 @@ export default function Modal({setModal, modal}: {setModal:any, modal:any}) {
                             )}
 
                             <button className='button' onClick={saveHandle}>Save</button>
+
+                            {!deleteConfirm ? (
+                                <button className='button' onClick={() => setDeleteConfirm(true)}>Delete</button>
+                            ) : (
+                                <div className="field">
+                                    <button type="button" className='button' onClick={() => setDeleteConfirm(false)}>Cancel</button>
+                                    <button type="button" className='button' onClick={deleteHandler}>Delete</button>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
