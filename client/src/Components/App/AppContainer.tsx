@@ -47,8 +47,12 @@ export default function AppContainer() {
                 <div className="footer">
                     {load && (
                         <>
-                            <p>{userData.username}</p>
-                            <Logout />
+                            <div className="username">
+                                <p>{userData.username}</p>
+                            </div>
+                            <div className="logout-btn">
+                                <Logout />
+                            </div>
                         </>
                     )}
                 </div>

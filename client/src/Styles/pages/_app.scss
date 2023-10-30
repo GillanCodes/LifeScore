@@ -73,6 +73,23 @@ $margin: 10px;
             height: $footer-height;
             margin: $margin;
             background-color: $primary;
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            div:first-child {
+                margin-left: 10px;
+            }
+
+            div:last-child {
+                margin-right: 10px;
+            }
+
+            .username {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
         }
     }
 }
